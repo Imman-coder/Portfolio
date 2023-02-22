@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <!-- /Overlay/ -->
+    <div class="full-screen hidden flex-container-center">
+        <div class="boxpop flex-container-center">
+        <a>Columns</a>
+        <input type="number" id="cols" width="40" min="1" max="15" value="6" onchange="javascript:refresh_table()">
+        <br><br>
+        <a>Rows</a>
+        <input type="number" id="rows" width="40" min="1" max="15" value="8" onchange="javascript:refresh_table()">
+        <br><br>
+        <button onclick="createJson()">Save</button>
+
+        </div>
+    </div>
+    <!-- / -->
+
+
+    <div class="container" style="display: flex; height: 100%; flex-direction: column;">
+        <div class="topnav">
+            <a >Home</a>
+            <a>News</a>
+            <a onclick="javascript:download()" >Download</a>
+            <a onclick="javascript:loadJson()" >Upload</a>
+        </div>
+        <div class="left-col">
+            <div class="toolbox hidden">
+                <div class="colset">
+                    <a>Columns</a>
+                    <input type="number" id="cols" width="40" min="1" max="15" value="6" onchange="javascript:refresh_table()">
+                    <a>Rows</a>
+                    <input type="number" id="rows" width="40" min="1" max="15" value="8" onchange="javascript:refresh_table()">
+                </div>
+            </div>
+            <div class="grid-box">
+                <table id="tablee" style="table-layout: fixed; text-align: center; border: 1px solid black; width: 100%; border-collapse: collapse;">
+                </table>
+            </div>
+        </div>
+        <div class="down-box" style="display: flex; flex-direction: row;"</div>
+            <div class="down-left">
+                <a>This is a Lab?</a>
+                <input id="is_lab" type="checkbox">
+                <br>
+                <div id="subgroup_div">
+                    <a>No. of subgroups.</a>
+                    <select id="subgroups" onChange="javascript:subgroup_changed()">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+                <div id="sub_inf" class="sub-inf"> </div>
+                <a>Linked to </a>
+                <select id="linked_to">
+                    <option value="-">-</option>
+                    <option value="Previous">Previous</option>
+                    <option value="Next">Next</option>
+                    <option value="Previous and Next">Previous and Next</option>
+                </select>
+                <br>
+                <button id="save" onclick="javascript:save()">Save</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button onclick="javascript:dataloader(true);">Clear</button>   <br><br><br><a class="star" >output   selected:</a><a  class="pos"  id="so">1-1</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <br><br>
+            </div>
+            <div class="down-left output-box"> <pre id="output" ></pre></div>
+            <div class="down-float" >
+                <button onclick="javascript:download()" >Download</button> <button onclick="javascript:loadJson()">Open</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="scripts/FileSaver.js"></script>
+<script src="scripts/jquery-3.6.0.min.js"></script>
+<script src="scripts/db.js"></script>
+<script src="scripts/main.js"></script>
+<script src="scripts/table_handler.js"></script>
+</html>
